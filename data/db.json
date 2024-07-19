@@ -1,0 +1,55 @@
+{
+  "articles": [
+    {
+      "id": "1",
+      "title": "first article",
+      "content": "This is my first article. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni maxime consequatur qui recusandae sequi laboriosam asperiores dignissimos in. Exercitationem, alias ea illum dolorum sint nesciunt! Assumenda aut fuga officiis quod?",
+      "tags": [
+        "vue",
+        "laravel",
+        "adonis"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "second article",
+      "content": "This is my second article. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni maxime consequatur qui recusandae sequi laboriosam asperiores dignissimos in. Exercitationem, alias ea illum dolorum sint nesciunt! Assumenda aut fuga officiis quod?",
+      "tags": [
+        "html",
+        "javascript",
+        "css"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "ini judul artikel 3",
+      "content": "ini deskripsi artikel ke 3",
+      "tags": []
+    },
+    {
+      "id": "4",
+      "title": "ini judul artikel 4",
+      "content": "ini deskripsi artikel ke 4",
+      "tags": [
+       
+      ]
+    },
+    {
+      "id": "5",
+      "title": "artikel ke 5",
+      "content": "deskripsi artikel ke 5",
+      "tags": [
+        "vue",
+        "firebase"
+      ]
+    },
+    {
+      "id": "4e3c",
+      "title": "Laborum Tempore eu",
+      "content": "Cupiditate doloremqu",
+      "tags": [
+        "laravel"
+      ]
+    }
+  ]
+}
