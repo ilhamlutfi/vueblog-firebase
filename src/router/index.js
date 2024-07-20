@@ -5,6 +5,7 @@ import {
 import HomeView from '../views/HomeView.vue'
 import ShowArticle from '../views/articles/Show.vue'
 import CreateArticle from '../views/articles/Create.vue'
+import ArticleTag from '../views/articles/Tag.vue'
 
 const routes = [{
     path: '/',
@@ -21,6 +22,11 @@ const routes = [{
     path: '/articles/create',
     name: 'CreateArticle',
     component: CreateArticle
+  },
+  {
+    path: '/articles/tag/:tag',
+    name: 'ArticleTag',
+    component: ArticleTag
   }
 ]
 

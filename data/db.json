@@ -30,9 +30,7 @@
       "id": "4",
       "title": "ini judul artikel 4",
       "content": "ini deskripsi artikel ke 4",
-      "tags": [
-       
-      ]
+      "tags": []
     },
     {
       "id": "5",
@@ -49,6 +47,15 @@
       "content": "Cupiditate doloremqu",
       "tags": [
         "laravel"
+      ]
+    },
+    {
+      "id": "79a0",
+      "title": "ini postingan 1 dan 2",
+      "content": "belajar vue js dengan firebase di codepolitan",
+      "tags": [
+        "vuejs",
+        "firebase"
       ]
     }
   ]

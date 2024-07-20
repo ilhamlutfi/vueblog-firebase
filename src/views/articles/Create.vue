@@ -1,30 +1,67 @@
 <template>
-    <div>
-        <form @submit.prevent="handleCreate">
-            <div>
-                <label for="title">Title</label>
-                <input type="text" v-model="title">
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('/img/contact-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="page-heading">
+                        <h1>Create Article</h1>
+                    </div>
+                </div>
             </div>
-
-            <div>
-                <label for="content">Content</label>
-                <textarea id="content" cols="30" rows="10" v-model="content"></textarea>
-            </div>
-
-            <div>
-                <label for="tags">Tags</label>
-                <input type="text" v-model="tag" @keydown.enter.prevent="handleKeydown">
-            </div>
-
-            <button type="submit">Create</button>
-        </form>
-
-        <div v-for="tag in tags" :key="tag">
-            #{{ tag }}
         </div>
-        {{ title }}
-        {{ content }}
-    </div>
+    </header>
+
+    <!-- Main Content-->
+    <main class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+
+                    <div class="my-5">
+
+                        <form @submit.prevent="handleCreate">
+                            <div class="form-floating">
+                                <input class="form-control" id="name" type="text" placeholder="Enter article title..."
+                                    v-model="title">
+
+                                <label for="title">Title</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <textarea class="form-control" id="content" placeholder="Enter your content here..."
+                                    style="height: 12rem" v-model="content"></textarea>
+
+                                <label for="content">Content</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input class="form-control" id="tags" type="text" placeholder="Enter article tags..."
+                                    v-model="tag" @keydown.enter.prevent="handleKeydown">
+
+                                <label for="tags">Tags</label>
+                            </div>
+
+                            <br />
+
+                            <p>
+                                <span v-for="tag in tags" :key="tag">
+                                    #{{ tag }}
+                                </span>
+                                {{ title }} <br>
+                                {{ content }} <br>
+                            </p>
+
+                            <!-- Submit Button-->
+                            <button class="btn btn-primary text-uppercase" type="submit">
+                                Send
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </template>
 
 <script>
