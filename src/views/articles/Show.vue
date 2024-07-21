@@ -27,8 +27,10 @@
                             {{ singleArticle.content }}
                         </p>
                         
+                        <button class="btn btn-danger" @click="handleDelete">Delete</button>
+
                         <router-link :to="{ name: 'home'}">
-                            <button class="btn btn-primary">Back</button>
+                            <button class="btn btn-primary m-1">Back</button>
                         </router-link>
                     </div>
                 </div>
@@ -47,6 +49,9 @@
 <script>
     import getArticle from '@/composables/getArticle'
     import Loading from '@/components/Loading.vue'
+    import { deleteDoc, doc } from 'firebase/firestore';
+    import { projectFirestore } from '@/firebase/config';
+import router from '@/router';
     export default {
         props: ['id'],
         components: {
@@ -61,12 +66,23 @@
 
             const singleArticle = article
 
+            const handleDelete = async () => {
+                const res = doc(projectFirestore, 'articles', props.id)
+
+                await deleteDoc(res)
+
+                router.push({
+                    name: 'home'
+                })
+            }
+
             load()
 
             return {
                 article,
                 singleArticle,
-                error
+                error,
+                handleDelete
             }
         },
     }

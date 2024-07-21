@@ -1,8 +1,6 @@
 import { projectFirestore } from '@/firebase/config'
 import { doc, getDoc } from 'firebase/firestore';
-import {
-    ref
-} from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const getArticle = (id) => {

@@ -56,6 +56,12 @@
                             <button class="btn btn-primary text-uppercase" type="submit">
                                 Send
                             </button>
+
+                            <router-link :to="{ name: 'home' }">
+                                <button class="btn btn-secondary m-1 text-uppercase" type="button">
+                                    Back
+                                </button>
+                            </router-link>
                         </form>
                     </div>
                 </div>
@@ -67,6 +73,8 @@
 <script>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { projectFirestore } from '@/firebase/config'
+import { addDoc, collection } from 'firebase/firestore';
 
 export default {
     setup() {
@@ -92,11 +100,7 @@ export default {
                 tags: tags.value
             }
 
-            await fetch('http://localhost:3000/articles', {
-                method: 'POST',
-                headers: { 'Content-TYpe': 'application/json' },
-                body: JSON.stringify(article)
-            })
+            const res = await addDoc(collection(projectFirestore, 'articles'), article)
 
             router.push({
                 name: 'home'

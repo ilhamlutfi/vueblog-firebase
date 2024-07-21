@@ -8,24 +8,36 @@ const getArticles = () => {
 
     const load = async () => {
         try {
-             // Reference to the articles collection
+            // Reference to the articles collection
             const res = collection(projectFirestore, 'articles')
 
             // Get all the documents from the collection
             const queryGet = await getDocs(res)
 
+             // Check if the query returned any documents
+             if (queryGet.empty) {
+                 throw Error('No articles available');
+             }
+
             // Loop through the documents and push them to the articles array
             queryGet.forEach(doc => {
-                articles.value.push({ ...doc.data(), id: doc.id })
+                articles.value.push({
+                    ...doc.data(),
+                    id: doc.id
+                })
                 //  console.log(doc.id, " => ", doc.data());
             })
+            
         } catch (err) {
             error.value = err.message
         }
     }
 
-    return { articles, error, load }
+    return {
+        articles,
+        error,
+        load
+    }
 }
 
 export default getArticles
-
