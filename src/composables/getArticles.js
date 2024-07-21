@@ -1,4 +1,6 @@
 import { ref } from 'vue'
+import { projectFirestore } from '@/firebase/config'
+import { collection, getDocs } from 'firebase/firestore'
 
 const getArticles = () => {
     const articles = ref([])
@@ -6,16 +8,17 @@ const getArticles = () => {
 
     const load = async () => {
         try {
-            await new Promise(resolve => {
-                setTimeout(resolve, 2000)
+             // Reference to the articles collection
+            const res = collection(projectFirestore, 'articles')
+
+            // Get all the documents from the collection
+            const queryGet = await getDocs(res)
+
+            // Loop through the documents and push them to the articles array
+            queryGet.forEach(doc => {
+                articles.value.push({ ...doc.data(), id: doc.id })
+                //  console.log(doc.id, " => ", doc.data());
             })
-            let data = await fetch('http://localhost:3000/articles')
-
-            if (!data.ok) {
-                throw Error('No data available')
-            }
-
-            articles.value = await data.json()
         } catch (err) {
             error.value = err.message
         }

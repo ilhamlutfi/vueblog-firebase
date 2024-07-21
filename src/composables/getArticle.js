@@ -1,25 +1,40 @@
+import { projectFirestore } from '@/firebase/config'
+import { doc, getDoc } from 'firebase/firestore';
 import {
     ref
 } from 'vue'
+import { useRouter } from 'vue-router'
 
 const getArticle = (id) => {
+    const router = useRouter()
     const article = ref(null)
     const error = ref(null)
 
     const load = async () => {
         try {
-            await new Promise(resolve => {
-                setTimeout(resolve, 2000)
-            })
-            let data = await fetch('http://localhost:3000/articles/' + id)
+            // Create a reference to the specific document
+            const res = doc(projectFirestore, 'articles', id);
 
-            if (!data.ok) {
-                throw Error('No data available')
+            // Fetch the document
+            const queryGetSingle = await getDoc(res);
+
+            if (queryGetSingle.exists()) {
+                // Document data exists, assign it to the article
+                article.value = {
+                    ...queryGetSingle.data(),
+                    id: queryGetSingle.id
+                };
+            } else {
+                // No such document exists
+                throw Error('No data available');
             }
-
-            article.value = await data.json()
         } catch (err) {
             error.value = err.message
+            setTimeout(() => {
+                router.push({
+                    name: 'home'
+                })
+            }, 2000)
         }
     }
 
